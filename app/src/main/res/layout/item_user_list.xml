@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="3dp"
+
+    android:paddingTop="3dp"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/avatarImageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                fresco:placeholderImageScaleType="centerCrop"
+                fresco:roundAsCircle="true"/>
+            <RelativeLayout
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+                <com.shopback.presentation.viewmodel.MyCustomTextView
+                    android:id="@+id/item_name"
+                    android:layout_width="wrap_content"
+                    style="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorGrey"
+                    android:layout_height="wrap_content" />
+                <com.shopback.presentation.viewmodel.MyCustomTextView
+                    android:id="@+id/staffBadge"
+                    android:layout_width="60dp"
+                    android:visibility="gone"
+                    android:background="@drawable/rounded_shape"
+                    android:layout_below="@+id/item_name"
+                    android:layout_height="30dp"
+                    android:text="@string/id_staff"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

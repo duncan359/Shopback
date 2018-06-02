@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        app:layout_heightPercent="45%"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/btn_cancel"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:src="@drawable/cancel"
+            android:layout_gravity="left"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:gravity="center" />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/avatarImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            fresco:placeholderImageScaleType="centerCrop"
+            fresco:roundAsCircle="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:gravity="center" />
+        <com.shopback.presentation.viewmodel.MyCustomTextView
+            android:id="@+id/txt_num"
+            android:layout_width="match_parent"
+            style="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+        <com.shopback.presentation.viewmodel.MyCustomTextView
+            android:id="@+id/bioImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_gravity="center"
+            android:gravity="center" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+       android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        app:layout_heightPercent="55%">
+        <View
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorSkyGrey"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:tint="@color/colorGrey"
+                android:src="@drawable/icon"
+                />
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+                <com.shopback.presentation.viewmodel.MyCustomTextView
+                    android:id="@+id/item_name"
+                    android:layout_width="wrap_content"
+                    style="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorGrey"
+                    android:layout_height="wrap_content" />
+                <com.shopback.presentation.viewmodel.MyCustomTextView
+                    android:id="@+id/staffBadge"
+                    android:layout_width="60dp"
+                    android:visibility="gone"
+                    android:background="@drawable/rounded_shape"
+                    android:layout_below="@+id/item_name"
+                    android:layout_height="30dp"
+                    android:text="@string/id_staff"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center" />
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:tint="@color/colorGrey"
+                android:src="@drawable/location"
+                />
+            <RelativeLayout
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+                <com.shopback.presentation.viewmodel.MyCustomTextView
+                    android:id="@+id/txt_location"
+                    android:layout_width="wrap_content"
+                    style="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorGrey"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+           <ImageView
+               android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:tint="@color/colorGrey"
+                android:src="@drawable/link"
+                />
+            <RelativeLayout
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+                <com.shopback.presentation.viewmodel.TextViewFixTouchConsume
+                    android:id="@+id/txt_url"
+                    android:layout_width="wrap_content"
+                    style="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorGrey"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.percent.PercentRelativeLayout>
+
