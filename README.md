@@ -17,8 +17,9 @@ This Assignment was using MVP Structure and implements by Rxjava, Retrofit and D
   * Allow user to swipe refresh data.
 ![alt text](non_pagar.jpg)
 * Paginated listview
+  * Load all the data in one time and store in local arraylist and display 20 items in each page.
   * Allow user to click page to view info and page size is 20 and total items is 100 as well.
-  * Allow user to swipe refresh data.
+  * Allow user to swipe refresh data in first page.
 ![alt text](pagar.jpg)
 
 
