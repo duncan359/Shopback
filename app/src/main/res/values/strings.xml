@@ -3,4 +3,8 @@
     <string name="id_users">Users</string>
     <string name="id_githubusers">GitHub Users</string>
     <string name="id_staff">STAFF</string>
+    <string name="id_prev">Prev</string>
+    <string name="id_next">Next</string>
+    <string name="id_pagi">Paginated</string>
+    <string name="id_npagi">Non-Paginated</string>
 </resources>

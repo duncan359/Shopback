@@ -26,7 +26,7 @@ public class MainPresenter extends Presenter<MainPresenter.MainView> {
     }
 
 
-    public void UserList(String since)
+    public void UserList(String since, String per_page)
     {
         Subscriber<List<UserListResponse>> sub = new Subscriber<List<UserListResponse>>() {
             @Override
@@ -50,8 +50,9 @@ public class MainPresenter extends Presenter<MainPresenter.MainView> {
                 getView().UserList(result);
             }
         };
-        repository.UserList(sub,since);
+        repository.UserList(sub,since,per_page);
     }
+
 
     public void UserDetail(String username)
     {

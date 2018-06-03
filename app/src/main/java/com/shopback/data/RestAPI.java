@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 
 public interface RestAPI {
     @GET("users")
-    Flowable <List<UserListResponse>> Userlist (@Query("since") String since);
+    Flowable <List<UserListResponse>> Userlist (@Query("since") String since,@Query("per_page") String per_page);
 
     @GET("users/{username}")
     Flowable<UserDetail> getUser(@Path("username") String username);

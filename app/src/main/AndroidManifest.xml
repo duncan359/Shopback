@@ -20,6 +20,8 @@
         </activity>
         <activity android:name="com.shopback.presentation.activity.UserDetailActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name="com.shopback.presentation.activity.UserPagarListActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

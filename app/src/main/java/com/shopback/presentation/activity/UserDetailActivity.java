@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -40,6 +41,12 @@ public class UserDetailActivity extends BaseActivity implements MainPresenter.Ma
     TextView txt_location;
     @BindView(R.id.txt_url)
     TextView txt_url;
+    @BindView(R.id.ll_pro)
+    LinearLayout ll_pro;
+    @BindView(R.id.ll_header)
+    LinearLayout ll_header;
+    @BindView(R.id.ll_bottom)
+    LinearLayout ll_bottom;
     @Inject
     MainPresenter presenter;
     @Override
@@ -96,6 +103,9 @@ public class UserDetailActivity extends BaseActivity implements MainPresenter.Ma
     }
     @Override
     public void UserDetail(UserDetail result) {
+        ll_bottom.setVisibility(View.VISIBLE);
+        ll_header.setVisibility(View.VISIBLE);
+        ll_pro.setVisibility(View.GONE);
         if(result.getBlog()!=null) {
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
                 txt_url.setText(Html.fromHtml("<a href=" + result.getBlog() + ">" + result.getBlog(), Html.FROM_HTML_MODE_COMPACT));

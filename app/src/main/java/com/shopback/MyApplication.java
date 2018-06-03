@@ -8,17 +8,17 @@ import com.shopback.di.ApplicationComponent;
 import com.shopback.di.ApplicationModule;
 import com.shopback.di.DaggerApplicationComponent;
 import com.shopback.di.NetworkModule;
+import com.shopback.di.UserListResponse;
+
+import java.util.ArrayList;
 
 import timber.log.Timber;
 
 
-/**
- * Application class to initialize Dagger and Timber
- */
 public class MyApplication extends Application {
 
     private ApplicationComponent applicationComponent;
-
+    public ArrayList<UserListResponse> UserList = new ArrayList<UserListResponse>();
     @Override
     public void onCreate() {
         super.onCreate();
@@ -50,4 +50,18 @@ public class MyApplication extends Application {
     public ApplicationComponent getApplicationComponent() {
         return applicationComponent;
     }
+
+    public void addUserList(UserListResponse add) {
+        UserList.add(add);
+    }
+
+    public ArrayList<UserListResponse> getUserList() {
+        return UserList;
+    }
+
+    public void clearUserList()
+    {
+        UserList.clear();
+    }
+
 }

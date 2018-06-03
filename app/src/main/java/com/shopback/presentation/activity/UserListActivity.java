@@ -7,11 +7,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.shopback.MyApplication;
@@ -34,12 +37,18 @@ public class UserListActivity extends BaseActivity implements MainPresenter.Main
 
     @Inject
     MainPresenter presenter;
+
     Context context;
     Message msg;
     public String since="0";
+    public String per_page="30";
     public int count =0;
     @BindView(R.id.listview_product)
     ListView lvProduct;
+    @BindView(R.id.ll_home)
+    SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.ll_pro)
+    LinearLayout ll_pro;
     public View ftView;
     public Handler mHandler;
     private UserListAdapter adapter;
@@ -55,15 +64,33 @@ public class UserListActivity extends BaseActivity implements MainPresenter.Main
         initializePresenter();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         initData();
-        presenter.UserList(since);
+        presenter.UserList(since,per_page);
         toolbar.setTitle(getResources().getString(R.string.id_githubusers));
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.inflateMenu(R.menu.base_toolbar_menu);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int menuItemId = item.getItemId();
+                if (menuItemId == R.id.action_pagi) {
+                    Navigator.startPagarActivity(context);
+                    finish();
+                }
+
+
+                return true;
+            }
+        });
     }
     private void initData() {
         LayoutInflater li = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ftView = li.inflate(R.layout.footer_view, null);
         mHandler = new MyHandler();
         context=this;
+
+    }
+    @Override
+    public void onBackPressed() {
     }
     private void initializePresenter() {
         presenter.setView(this);
@@ -82,12 +109,14 @@ public class UserListActivity extends BaseActivity implements MainPresenter.Main
                 case 1:
                     adapter.addListItemToAdapter((ArrayList<UserListResponse>)msg.obj);
                     lvProduct.removeFooterView(ftView);
+                    mSwipeRefreshLayout.setRefreshing(false);
                     if(count<100)
                     {
                         isLoading=false;
                     }
                     break;
                 case 2:
+                    mSwipeRefreshLayout.setRefreshing(false);
                     lvProduct.removeFooterView(ftView);
                     break;
                 default:
@@ -118,6 +147,7 @@ public class UserListActivity extends BaseActivity implements MainPresenter.Main
         if(result.size()>0)
         {
             if(count==0) {
+                ll_pro.setVisibility(View.GONE);
                 msg = mHandler.obtainMessage(2);
                 adapter = new UserListAdapter(this, result);
                 lvProduct.setAdapter(adapter);
@@ -126,6 +156,13 @@ public class UserListActivity extends BaseActivity implements MainPresenter.Main
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         UserListResponse result =  (UserListResponse) adapter.getItem(position);
                         Navigator.startDetailActivity(context,result.getLogin());
+                    }
+                });
+                mSwipeRefreshLayout.setEnabled(false);
+                mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        refreshContent();
                     }
                 });
                 lvProduct.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -140,14 +177,13 @@ public class UserListActivity extends BaseActivity implements MainPresenter.Main
 
                         if(view.getLastVisiblePosition() == totalItemCount-1 && lvProduct.getCount() >=30&& isLoading == false) {
                             isLoading = true;
-                            presenter.UserList(since);
+                            presenter.UserList(since,per_page);
                             mHandler.sendEmptyMessage(0);
-                            showToast(""+lvProduct.getCount());
                         }
                         int topRowVerticalPosition =
                                 (lvProduct == null || lvProduct.getChildCount() == 0) ?
                                         0 : lvProduct.getChildAt(0).getTop();
-                        //mSwipeRefreshLayout.setEnabled(firstVisibleItem == 0 && topRowVerticalPosition >= 0);
+                        mSwipeRefreshLayout.setEnabled(firstVisibleItem == 0 && topRowVerticalPosition >= 0);
                     }
                 });
             }
@@ -161,6 +197,16 @@ public class UserListActivity extends BaseActivity implements MainPresenter.Main
         }
     }
 
+    private void refreshContent(){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                count=0;
+                since="0";
+                presenter.UserList(since,per_page);
+            }
+        },0);
+    }
     @Override
     public void UserDetail(UserDetail result) {
 

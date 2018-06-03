@@ -16,6 +16,6 @@ import java.util.List;
  */
 
 public interface Repository {
-    void UserList(Subscriber<List<UserListResponse>> subscriber, String since) ;
+    void UserList(Subscriber<List<UserListResponse>> subscriber, String since, String per_page) ;
     void UserDetail(Subscriber<UserDetail> subscriber, String username) ;
 }

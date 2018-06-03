@@ -6,22 +6,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:id="@+id/ll_pro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_header"
         app:layout_heightPercent="45%"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <ImageView
             android:id="@+id/btn_cancel"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/cancel"
             android:layout_gravity="left"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:gravity="center" />
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/avatarImageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
             fresco:placeholderImageScaleType="centerCrop"
             fresco:roundAsCircle="true"
@@ -36,8 +49,8 @@
             android:layout_height="wrap_content" />
         <com.shopback.presentation.viewmodel.MyCustomTextView
             android:id="@+id/bioImageView"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_gravity="center"
@@ -46,13 +59,15 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
        android:orientation="vertical"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         app:layout_heightPercent="55%">
         <View
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorSkyGrey"/>

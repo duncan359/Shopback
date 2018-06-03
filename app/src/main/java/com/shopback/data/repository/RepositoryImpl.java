@@ -27,9 +27,10 @@ public class RepositoryImpl implements Repository {
         this.api = api;
     }
 
+
     @Override
-    public void UserList(Subscriber<List<UserListResponse>> subscriber, String since) {
-        api.Userlist(since)
+    public void UserList(Subscriber<List<UserListResponse>> subscriber, String since, String per_page) {
+        api.Userlist(since, per_page)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

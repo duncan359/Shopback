@@ -40,25 +40,61 @@
         android:paddingLeft="10dp"
         android:layout_alignParentBottom="true"
         app:layout_heightPercent="90%">
-        <com.shopback.presentation.viewmodel.MyCustomTextView
+        <LinearLayout
+            android:layout_width="match_parent"
             android:id="@+id/title_purchase"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        <com.shopback.presentation.viewmodel.MyCustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@android:style/TextAppearance.DeviceDefault.Large"
             android:text="@string/id_users"
             android:textColor="@color/colorGrey" />
-        <ListView
+            <com.shopback.presentation.viewmodel.MyCustomTextView
+                android:id="@+id/title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                style="@android:style/TextAppearance.DeviceDefault.Large"
+                android:padding="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lbl_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/title_purchase"
-            android:layout_width="match_parent"
+            android:orientation="horizontal" >
+            <com.shopback.presentation.viewmodel.MyCustomButton
+                android:id="@+id/btn_prev"
+                android:text="@string/id_prev"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                />
 
+            <com.shopback.presentation.viewmodel.MyCustomButton
+                android:id="@+id/btn_next"
+                android:text="@string/id_next"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <ListView
+            android:layout_below="@+id/lbl_button"
+            android:layout_width="match_parent"
             android:focusableInTouchMode="true"
             android:layout_height="match_parent"
             android:id="@+id/listview_product"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_alignParentBottom="true"
             android:dividerHeight="10dp"
             android:divider="@color/white"></ListView>
+
     </RelativeLayout>
     </android.support.percent.PercentRelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
