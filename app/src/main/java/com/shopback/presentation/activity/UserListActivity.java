@@ -159,7 +159,7 @@ public class UserListActivity extends BaseActivity implements MainPresenter.Main
                         Navigator.startDetailActivity(context,result.getLogin());
                     }
                 });
-
+                mSwipeRefreshLayout.setEnabled(false);
                 mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
