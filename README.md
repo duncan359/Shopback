@@ -5,11 +5,6 @@ This Assignment was using MVP Structure and implements by Rxjava, Retrofit and D
 * Android Studio 3.0.1
 * Support SDK 19 to 26
 
-### Structure 
-* Activity load context from **fragment** which are available in **com.duncan.read.News.view** folder 
-* Fragment call presenter which are available in **com.duncan.read.News.presenter** for process **HACKER NEWS** api calling. 
-* presenter do process for request and call to Retrofit by UseCaseImpl whih are available in **com.duncan.read.News.domain** 
-* ReposityitoryImpl will be called in **UseCaseImpl** by **Retrofit** and **Logansquare** library and return callback. 
-* UseCaseImpl will pass the result to presenter by eventbus event. 
-* presenter will collect the data from server and do the process and pass to **fragment** by eventbus. 
-* fragment receive response and process to generate listview and display in screen.
+### Design Structure 
+* Provide 2 different option for user
+* ![alt text](non_pagar.png "1. Non-Paginated option")
