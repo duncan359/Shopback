@@ -132,4 +132,12 @@ public class UserDetailActivity extends BaseActivity implements MainPresenter.Ma
         }
 
     }
+
+    @Override
+    public void httpError() {
+        ll_bottom.setVisibility(View.VISIBLE);
+        ll_header.setVisibility(View.VISIBLE);
+        ll_pro.setVisibility(View.GONE);
+        showToast(getResources().getString(R.string.txt_interneterror));
+    }
 }

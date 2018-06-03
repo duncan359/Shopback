@@ -37,7 +37,6 @@
         </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:paddingLeft="10dp"
         android:layout_alignParentBottom="true"
         app:layout_heightPercent="90%">
         <com.shopback.presentation.viewmodel.MyCustomTextView
@@ -54,10 +53,10 @@
             android:focusableInTouchMode="true"
             android:layout_height="match_parent"
             android:id="@+id/listview_product"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:dividerHeight="10dp"
+            android:layout_marginTop="@dimen/listview_margin"
+            android:layout_marginLeft="@dimen/listview_margin"
+            android:layout_marginRight="@dimen/listview_margin"
+            android:dividerHeight="@dimen/listview_margin"
             android:divider="@color/white"></ListView>
     </RelativeLayout>
     </android.support.percent.PercentRelativeLayout>

@@ -211,4 +211,12 @@ public class UserListActivity extends BaseActivity implements MainPresenter.Main
     public void UserDetail(UserDetail result) {
 
     }
+
+    @Override
+    public void httpError() {
+        lvProduct.removeFooterView(ftView);
+        mSwipeRefreshLayout.setRefreshing(false);
+        ll_pro.setVisibility(View.GONE);
+        showToast(getResources().getString(R.string.txt_interneterror));
+    }
 }

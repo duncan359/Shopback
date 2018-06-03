@@ -49,6 +49,8 @@ public class UserPagarListActivity extends BaseActivity implements MainPresenter
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.ll_pro)
     LinearLayout ll_pro;
+    @BindView(R.id.lbl_button)
+    LinearLayout lbl_button;
     @BindView(R.id.btn_next)
     Button btn_next;
     @BindView(R.id.btn_prev)
@@ -150,44 +152,45 @@ public class UserPagarListActivity extends BaseActivity implements MainPresenter
     }
     private void loadList(int number,boolean position)
     {
-        mSwipeRefreshLayout.setRefreshing(false);
-        ll_pro.setVisibility(View.GONE);
-        ArrayList<String> sort = new ArrayList<String>();
-        title.setText("Page "+(number)+" of "+pageCount);
-        int start = number * NUM_ITEMS_PAGE;
-        ArrayList<UserListResponse> result;
-        if(position) {
-           result = new ArrayList<>(((MyApplication) getApplication()).getUserList().subList(prevStart, start));
-        }
-        else
-        {
-            result = new ArrayList<>(((MyApplication) getApplication()).getUserList().subList(prevStart-(NUM_ITEMS_PAGE*2), start));
-        }
-        adapter = new UserListAdapter(this, result);
-        lvProduct.setAdapter(adapter);
-        lvProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                UserListResponse result =  (UserListResponse) adapter.getItem(position);
-                Navigator.startDetailActivity(context,result.getLogin());
+        if(((MyApplication) getApplication()).getUserList().size()==TOTAL_LIST_ITEMS) {
+            lbl_button.setVisibility(View.VISIBLE);
+            mSwipeRefreshLayout.setRefreshing(false);
+            ll_pro.setVisibility(View.GONE);
+            ArrayList<String> sort = new ArrayList<String>();
+            title.setText("Page " + (number) + " of " + pageCount);
+            int start = number * NUM_ITEMS_PAGE;
+            ArrayList<UserListResponse> result;
+            if (position) {
+                result = new ArrayList<>(((MyApplication) getApplication()).getUserList().subList(prevStart, start));
+            } else {
+                result = new ArrayList<>(((MyApplication) getApplication()).getUserList().subList(prevStart - (NUM_ITEMS_PAGE * 2), start));
             }
-        });
-        lvProduct.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            adapter = new UserListAdapter(this, result);
+            lvProduct.setAdapter(adapter);
+            lvProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    UserListResponse result = (UserListResponse) adapter.getItem(position);
+                    Navigator.startDetailActivity(context, result.getLogin());
+                }
+            });
+            lvProduct.setOnScrollListener(new AbsListView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(AbsListView view, int scrollState) {
 
-            }
+                }
 
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                lvProduct.requestFocus();
-                int topRowVerticalPosition =
-                        (lvProduct == null || lvProduct.getChildCount() == 0) ?
-                                0 : lvProduct.getChildAt(0).getTop();
-                mSwipeRefreshLayout.setEnabled(firstVisibleItem == 0 && topRowVerticalPosition >= 0&&increment==1);
-            }
-        });
-        prevStart=start;
+                @Override
+                public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                    lvProduct.requestFocus();
+                    int topRowVerticalPosition =
+                            (lvProduct == null || lvProduct.getChildCount() == 0) ?
+                                    0 : lvProduct.getChildAt(0).getTop();
+                    mSwipeRefreshLayout.setEnabled(firstVisibleItem == 0 && topRowVerticalPosition >= 0 && increment == 1);
+                }
+            });
+            prevStart = start;
+        }
     }
     @Override
     public void hideLoading() {
@@ -225,6 +228,14 @@ public class UserPagarListActivity extends BaseActivity implements MainPresenter
     }
     @Override
     public void UserDetail(UserDetail result) {
+
+    }
+
+    @Override
+    public void httpError() {
+        mSwipeRefreshLayout.setRefreshing(false);
+        ll_pro.setVisibility(View.GONE);
+        showToast(getResources().getString(R.string.txt_interneterror));
 
     }
 }

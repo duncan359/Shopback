@@ -37,7 +37,7 @@ public class MainPresenter extends Presenter<MainPresenter.MainView> {
 
             @Override
             public void onError(Throwable e) {
-
+                getView().httpError();
             }
 
             @Override
@@ -65,7 +65,7 @@ public class MainPresenter extends Presenter<MainPresenter.MainView> {
 
             @Override
             public void onError(Throwable e) {
-
+                getView().httpError();
             }
 
             @Override
@@ -85,10 +85,6 @@ public class MainPresenter extends Presenter<MainPresenter.MainView> {
     public interface MainView extends Presenter.View{
         void UserList(List<UserListResponse> result);
         void UserDetail(UserDetail result);
-//        void PurchaseResult(GetResponse result);
-//        void TopupResult(GetResponse result);
-//        void TopupList(GetTopupResponse result);
-//        void HistoryResult(GetHistoryResponse result);
-
+        void httpError();
     }
 }

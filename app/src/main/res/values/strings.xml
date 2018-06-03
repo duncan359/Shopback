@@ -7,4 +7,5 @@
     <string name="id_next">Next</string>
     <string name="id_pagi">Paginated</string>
     <string name="id_npagi">Non-Paginated</string>
+    <string name="txt_interneterror">Internet Error</string>
 </resources>
