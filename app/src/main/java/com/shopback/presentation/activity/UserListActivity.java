@@ -81,6 +81,7 @@ public class UserListActivity extends BaseActivity implements MainPresenter.Main
                 return true;
             }
         });
+        mSwipeRefreshLayout.setEnabled(false);
     }
     private void initData() {
         LayoutInflater li = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
