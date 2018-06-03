@@ -1,4 +1,4 @@
-# Assignment
+# android_exercise
 This Assignment was using MVP Structure and implements by Rxjava, Retrofit and Dagger.
 * Loading Picture library - fresco
 * UI Injection library - butterknife
