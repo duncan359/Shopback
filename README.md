@@ -8,7 +8,7 @@ This Assignment was using MVP Structure and implements by Rxjava, Retrofit and D
 * Android Studio 3.0.1
 * Support SDK 19 to 26
 
-### Design Structure 
+### what was your assumptions and design considerations when doing the exercise
 * Provide 2 different list view UI for better user experience.
   * Non-Paginated listview
   * Paginated listview
@@ -17,7 +17,7 @@ This Assignment was using MVP Structure and implements by Rxjava, Retrofit and D
   * Allow user to swipe refresh data.
 ![alt text](non_pagar.jpg)
 * Paginated listview
-  * Allow user to click page to view info and page size is 20.
+  * Allow user to click page to view info and page size is 20 and total items is 100 as well.
   * Allow user to swipe refresh data.
 ![alt text](pagar.jpg)
 
