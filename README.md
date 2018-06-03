@@ -7,7 +7,8 @@ This Assignment was using MVP Structure and implements by Rxjava, Retrofit and D
 
 ### Design Structure 
 * Provide 2 different option for user
-* ![alt text](non_pagar.jpg "1. Non-Paginated option")
-** Allow user to scroll down to load more data and limit is 100 items.
-** Allow user to swipe refresh data.
+* 1. Non-Paginated option
+* ![alt text](non_pagar.jpg)
+ * Allow user to scroll down to load more data and limit is 100 items.
+ * Allow user to swipe refresh data.
 
